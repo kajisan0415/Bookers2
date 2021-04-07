@@ -1,0 +1,21 @@
+<%= render 'users/list',users:@users %>
+
+ <h1>Users</h1>
+  <table>
+   <thead>
+   <th>image</th>
+   <th>name</th>
+   <th colspan="3"></th>
+   </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+    </tr>
+     <% end %>
+   </tbody>
+  </table>
+a
+a
+a
+a
