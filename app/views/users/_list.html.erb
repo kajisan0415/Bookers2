@@ -1,5 +1,13 @@
  <div class="profile-container">
-  <h3 class="profile-name">Username</h3>
+   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  <h3>Name</h3>
+   <%= user.name %>
+  <h3>Introduction</h3>
+  <%= user.introduction %>
+  
+  <% if user.id == current_user.id %>
+  <%= link_to "edit", edit_user_path(user) %>
+  <% end %>
 </div>
   
   

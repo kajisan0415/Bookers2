@@ -8,6 +8,12 @@
     <table>
         <tbody>
             <tr>
+              <td>
+                <%= link_to "/users/#{@user.id}" do %>
+                <%= @user.name %>
+                <% end %>
+              </td>
+              <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
               <td><%= @book.title %></td>
               <td><%= @book.body %></td>
               <td>
@@ -19,5 +25,3 @@
             </tr>
         </tbody>
     </table>
-
- <%= link_to("Edit","/books/#{@book.id}/edit") %> | <%= link_to("Back","/books") %>

@@ -1,4 +1,4 @@
-<%= render 'users/list', users: @users %>
+<%= render 'users/list', user: current_user %>
 
  <% if flash[:notice] %>
   <div class="flash">
@@ -16,11 +16,11 @@
   <tbody>
     <% @books.each do |book| %>
     <tr>
-      <td><%= book.title %></td>
-      <td><%= book.body %></td>
-      <td>
-       <%= link_to "show","/books/#{book.id}" %>
+      <td><%= link_to "/books/#{book.id}" do %>
+      <%= book.title %>
+      <% end %>
       </td>
+      <td><%= book.body %></td>
     </tr>
      <% end %>
    </tbody>
