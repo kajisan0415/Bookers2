@@ -1,25 +1,38 @@
-<%= render 'users/list',user: current_user,book: @book %>
+<main>
+    <p id="notice"></p>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <div class="container px-5 px-sm-0">
+        <div class="row">
+            <%= render 'users/list',user: current_user,book: @book %>
+            <div class="col-md-8 offset-md-1">
+                <h2>Users</h2>
+                <table class="table">
+                     <thead>
+                         <tr>
+                            <th>image</th>
+                            <th>name</th>
+                            <th colspan="3"></th>
+                         </tr>
+                     </thead>
+                    <tbody>
+                        <% @users.each do |user| %>
+                            <tr>
+                                <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
+                                <td><%= user.name %></td>
+                                <td><%= link_to "Show","/users/#{user.id}" %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
 
- <h1>Users</h1>
-  <table>
-   <thead>
-   <th>image</th>
-   <th>name</th>
-   <th colspan="3"></th>
-   </thead>
-  <tbody>
-    <% @users.each do |user| %>
-    <tr>
-      <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
-    </tr>
-    
-    <tr>
-      <td><%= user.name %></td>
-    </tr>
-    
-    <tr>
-      <td><%= link_to "Show","/users/#{user.id}" %></td>
-    </tr>
-     <% end %>
-   </tbody>
-  </table>
+
+
+ 

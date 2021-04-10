@@ -1,31 +1,43 @@
-<%= render 'users/list', user: current_user, book: @book %>
-
+<main>
+ <p id="notice"></p>
  <% if flash[:notice] %>
-  <div class="flash">
-  <%= flash[:notice] %>
-  </div>
+   <div class="flash">
+     <%= flash[:notice] %>
+   </div>
  <% end %>
-
- <h1>Books</h1>
-  <table>
-   <thead>
-   <th>Title</th>
-   <th>Opinion</th>
-   <th colspan="3"></th>
-   </thead>
-  <tbody>
-    <% @books.each do |book| %>
-    <tr>
-      <td><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
-      <td><%= link_to "/books/#{book.id}" do %>
-      <%= book.title %>
-      <% end %>
-      </td>
-      <td><%= book.body %></td>
-    </tr>
-     <% end %>
-   </tbody>
-  </table>
-
+ <div class="container px-5 px-sm-0">
+  <div class="row">
+   <%= render 'users/list', user: current_user %>
+   <div class="col-md-8 offset-md-1">
+     <h2>Books</h2>
+     <table class="table table-hover table-inverse">
+       <thead>
+        <tr>
+         <th></th>
+         <th>Title</th>
+         <th>Opinion</th>
+         <th colspan="3"></th>
+        </tr>
+       </thead>
+        <tbody>
+          <% @books.each do |book| %>
+          <tr>
+            <td><%= link_to "/users/#{book.user_id}" do %>
+                <%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+                <% end %>
+            </td>
+            <td><%= link_to "/books/#{book.id}" do %>
+                <%= book.title %>
+                <% end %>
+            </td>
+            <td><%= book.body %></td>
+          </tr>
+          <% end %>
+        </tbody>
+     </table>
+   </div>
+  </div>
+ </div>
+</main>
 
 
