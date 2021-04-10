@@ -37,7 +37,7 @@
             </ul>
           </div>
        <% else %>
-         
+
            <%= link_to root_path,class:"navbar-brand" do %>
            <span>Bookers</span>
            <% end %>
@@ -50,7 +50,7 @@
                 <%= link_to "Home", root_path,class:"fas fa-home nav-link text-light" %>
               </li>
               <li>
-                <%= link_to("about", "/homes/about",class:"fas fa-link nav-link text-light") %>
+                <%= link_to("About", "/home/about",class:"fas fa-link nav-link text-light") %>
                 </li>
               <li>
                 <%= link_to "sign up", new_user_registration_path,class:"fas fa-user-plus nav-link text-light" %>
@@ -76,6 +76,6 @@
         </div>
       </div>
     </footer>
-    
+
   </body>
 </html>
